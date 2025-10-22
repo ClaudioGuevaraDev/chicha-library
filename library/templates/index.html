@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chicha Library - Tu colección de herramientas de programación</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <!-- Hero Section -->
+    {% include "hero.html" %}
+
+    <!-- Últimas Librerías Agregadas - Carousel -->
+    {% include "latest_libraries_carousel.html" %}
+
+    <!-- Búsqueda y Filtros -->
+    {% include "search_filters.html" %}
+
+    <!-- Grilla de Librerías -->
+    {% include "libraries_grid.html" %}
+
+    <!-- Sección de Contacto/Sugerencias -->
+    {% include "contact.html" %}
+
+    <!-- Footer -->
+    {% include "footer.html" %}
+
+    <script
+      src="{% static 'js/bootstrap.bundle.min.js' %}"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="{% static 'js/popper.min.js' %}"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="{% static 'js/bootstrap.min.js' %}"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
