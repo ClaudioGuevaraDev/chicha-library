@@ -1,4 +1,4 @@
-<section class="carousel-section">
+<section class="latest-section py-5">
   <div class="container">
     <h3 class="text-center mb-5 fw-bold">
       <span class="d-inline-block" style="font-size: 1.2em">🌟</span>
@@ -17,89 +17,42 @@
       </span>
     </h3>
 
-    <div
-      id="latestLibrariesCarousel"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <!-- Indicadores -->
-      <div class="carousel-indicators">
-        {% for slide in slides %}
-        <button
-          type="button"
-          data-bs-target="#latestLibrariesCarousel"
-          data-bs-slide-to="{{ forloop.counter0 }}"
-          class="{% if forloop.first %}active{% endif %}"
-        ></button>
-        {% endfor %}
-      </div>
-
-      <!-- Slides -->
-      <div class="carousel-inner">
-        {% for slide in slides %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <div class="row g-4">
-            {% for item in slide %}
-            <div class="col-md-4">
-              <div class="card library-card">
-                {% if item.image %}
-                <img
-                  src="/media/{{ item.image }}"
-                  class="card-img-top"
-                  alt="{{ item.name }}"
-                />
-                {% else %}
-                <img
-                  src="/media/items/default.png"
-                  class="card-img-top"
-                  alt="Sin imagen"
-                  style="object-fit: contain"
-                />
-                {% endif %}
-                <div class="card-body">
-                  <div class="d-flex flex-wrap mb-2">
-                  {% for category in item.categories.all %}
-                    <span class="category-badge me-2 mb-2">{{ category.name }}</span>
-                  {% endfor %}
-                </div>
-                  <h5 class="card-title mt-2">{{ item.name }}</h5>
-                  <p class="card-text">{{ item.description }}</p>
-                  {% if item.url %}
-                  <a
-                    href="{{ item.url }}"
-                    target="_blank"
-                    class="btn btn-visit btn-sm"
-                    >Visitar sitio →</a
-                  >
-                  {% endif %}
-                </div>
-              </div>
+    <div class="row g-4">
+      {% for item in latest_items %}
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card library-card">
+          {% if item.image %}
+          <img
+            src="/media/{{ item.image }}"
+            class="card-img-top"
+            alt="{{ item.name }}"
+          />
+          {% else %}
+          <img
+            src="/media/items/default.png"
+            class="card-img-top"
+            alt="Sin imagen"
+            style="object-fit: contain;"
+          />
+          {% endif %}
+          <div class="card-body">
+            <div class="d-flex flex-wrap mb-2">
+              {% for category in item.categories.all %}
+              <span class="category-badge me-2 mb-2">{{ category.name }}</span>
+              {% endfor %}
             </div>
-            {% endfor %}
+            <h5 class="card-title mt-2">{{ item.name }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <a
+              href="{{ item.url }}"
+              target="_blank"
+              class="btn btn-visit btn-sm"
+              >Visitar sitio →</a
+            >
           </div>
         </div>
-        {% endfor %}
       </div>
-
-      <!-- Controles -->
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#latestLibrariesCarousel"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#latestLibrariesCarousel"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
+      {% endfor %}
     </div>
   </div>
 </section>
