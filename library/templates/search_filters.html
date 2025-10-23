@@ -1,6 +1,6 @@
 <div class="container" id="results">
   <div class="search-section">
-    <h3 class="text-center mb-4 fw-bold">🔍 Explorar Librerías</h3>
+    <h3 class="text-center mb-4 fw-bold">🔍 Explore Libraries</h3>
     <form method="get" action="#results">
       <div class="row g-3">
         <div class="col-md-8">
@@ -8,21 +8,28 @@
             type="text"
             name="search"
             class="form-control"
-            placeholder="Buscar librerías, frameworks..."
+            placeholder="Search libraries, frameworks..."
             value="{{ request.GET.search }}"
           />
         </div>
         <div class="col-md-4">
           <select name="category" class="form-select">
-            <option value="" {% if not request.GET.category %}selected{% endif %}>Todas las categorías</option>
+            <option value="" {% if not request.GET.category %}selected{% endif %}>
+              All categories
+            </option>
             {% for category in categories %}
-            <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+            <option
+              value="{{ category.id }}"
+              {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}
+            >
+              {{ category.name }}
+            </option>
             {% endfor %}
           </select>
         </div>
       </div>
       <div class="text-end mt-3">
-        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <button type="submit" class="btn btn-primary">Filter</button>
       </div>
     </form>
   </div>

@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h3 class="text-center mb-4 fw-bold">💌 Envíanos tus Sugerencias</h3>
+        <h3 class="text-center mb-4 fw-bold">💌 Send Us Your Suggestions</h3>
         <p class="text-center text-muted mb-5">
-          ¿Conoces alguna librería increíble que no está en nuestra colección?
-          ¡Cuéntanos!
+          Do you know an amazing library that's not in our collection yet? Let
+          us know!
         </p>
 
         <form method="POST" action="{% url 'home' %}">
@@ -25,7 +25,7 @@
 
           <div class="row g-3">
             <div class="col-md-6">
-              <label for="nombre" class="form-label">Nombre</label>
+              <label for="full_name" class="form-label">Name</label>
               <input
                 type="text"
                 class="form-control"
@@ -45,9 +45,7 @@
             </div>
 
             <div class="col-md-6">
-              <label for="libreria" class="form-label"
-                >Nombre de la Librería</label
-              >
+              <label for="library_name" class="form-label">Library Name</label>
               <input
                 type="text"
                 class="form-control"
@@ -62,9 +60,9 @@
             </div>
 
             <div class="col-md-6">
-              <label for="categoria" class="form-label">Categoría</label>
+              <label for="category" class="form-label">Category</label>
               <select class="form-select" id="category" name="category">
-                <option selected>Selecciona una categoría</option>
+                <option selected>Select a category</option>
                 {% for category in categories %}
                 <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
@@ -72,7 +70,7 @@
             </div>
 
             <div class="col-12">
-              <label for="mensaje" class="form-label">Descripción</label>
+              <label for="description" class="form-label">Description</label>
               <textarea
                 class="form-control"
                 id="description"
@@ -83,7 +81,7 @@
 
             <div class="col-12">
               <button type="submit" class="btn btn-primary">
-                Enviar Sugerencia
+                Send Suggestion
               </button>
             </div>
           </div>

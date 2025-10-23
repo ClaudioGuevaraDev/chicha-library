@@ -27,7 +27,7 @@ def home(request):
 
         post.save()
 
-        messages.success(request, "¡Gracias por tu sugerencia! La revisaremos pronto.")
+        messages.success(request, "Thank you for your suggestion! We’ll review it soon.")
 
         return redirect(reverse("home") + "#contact")
 

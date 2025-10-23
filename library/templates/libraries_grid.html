@@ -13,7 +13,7 @@
         <img
           src="/media/items/default.png"
           class="card-img-top"
-          alt="Sin imagen"
+          alt="No image available"
           style="object-fit: contain"
         />
         {% endif %}
@@ -25,34 +25,32 @@
           </div>
           <h5 class="card-title mt-2">{{ item.name }}</h5>
           <p class="card-text">{{ item.description }}</p>
-          <a href="{{ item.url }}" target="_blank" class="btn btn-visit btn-sm"
-            >Visitar sitio →</a
-          >
+          <a href="{{ item.url }}" target="_blank" class="btn btn-visit btn-sm">
+            Visit site →
+          </a>
         </div>
       </div>
     </div>
     {% endfor %} {% else %}
     <div class="col-12 text-center my-5">
-      <p class="fw-bold">
-        No se encontraron librerías que coincidan con tu búsqueda.
-      </p>
+      <p class="fw-bold">No libraries found matching your search.</p>
     </div>
     {% endif %}
   </div>
 
-  <!-- Paginación -->
+  <!-- Pagination -->
   {% if items %}
-  <nav aria-label="Navegación de páginas" class="mt-5">
+  <nav aria-label="Page navigation" class="mt-5">
     <ul class="pagination justify-content-center">
       {% if items.has_previous %}
       <li class="page-item">
-        <a class="page-link" href="?page={{ items.previous_page_number }}"
-          >Anterior</a
-        >
+        <a class="page-link" href="?page={{ items.previous_page_number }}">
+          Previous
+        </a>
       </li>
       {% else %}
       <li class="page-item disabled">
-        <span class="page-link">Anterior</span>
+        <span class="page-link">Previous</span>
       </li>
       {% endif %} {% for num in items.paginator.page_range %} {% if items.number == num %}
       <li class="page-item active"><span class="page-link">{{ num }}</span></li>
@@ -71,12 +69,12 @@
           class="page-link"
           href="?page={{ items.next_page_number }}&search={{ request.GET.search }}&category={{ request.GET.category }}#results"
         >
-          Siguiente
+          Next
         </a>
       </li>
       {% else %}
       <li class="page-item disabled">
-        <span class="page-link">Siguiente</span>
+        <span class="page-link">Next</span>
       </li>
       {% endif %}
     </ul>
