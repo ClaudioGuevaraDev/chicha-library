@@ -8,15 +8,17 @@
           ¡Cuéntanos!
         </p>
 
-        <form>
+        <form method="POST" action="{% url 'home' %}">
+          {% csrf_token %}
+
           <div class="row g-3">
             <div class="col-md-6">
               <label for="nombre" class="form-label">Nombre</label>
               <input
                 type="text"
                 class="form-control"
-                id="nombre"
-                placeholder="Tu nombre"
+                id="full_name"
+                name="full_name"
               />
             </div>
 
@@ -26,19 +28,18 @@
                 type="email"
                 class="form-control"
                 id="email"
-                placeholder="tu@email.com"
+                name="email"
               />
             </div>
 
             <div class="col-md-6">
-              <label for="libreria" class="form-label"
-                >Nombre de la Librería</label
+              <label for="libreria" class="form-label">Nombre de la Librería</label
               >
               <input
                 type="text"
                 class="form-control"
-                id="libreria"
-                placeholder="Ej: React, Vue, Django..."
+                id="library_name"
+                name="library_name"
               />
             </div>
 
@@ -48,34 +49,28 @@
                 type="url"
                 class="form-control"
                 id="url"
-                placeholder="https://ejemplo.com"
+                name="url"
               />
             </div>
 
             <div class="col-md-6">
               <label for="categoria" class="form-label">Categoría</label>
-              <select class="form-select" id="categoria">
+              <select class="form-select" id="category" name="category">
                 <option selected>Selecciona una categoría</option>
-                <option value="frontend">Frontend</option>
-                <option value="backend">Backend</option>
-                <option value="css">CSS</option>
-                <option value="database">Base de Datos</option>
-                <option value="testing">Testing</option>
-                <option value="devops">DevOps</option>
-                <option value="mobile">Mobile</option>
-                <option value="machine-learning">Machine Learning</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
               </select>
             </div>
 
             <div class="col-12">
-              <label for="mensaje" class="form-label"
-                >Mensaje / Descripción</label
+              <label for="mensaje" class="form-label">Descripción</label
               >
               <textarea
                 class="form-control"
-                id="mensaje"
+                id="description"
+                name="description"
                 rows="4"
-                placeholder="Cuéntanos por qué crees que deberíamos agregar esta librería..."
               ></textarea>
             </div>
 
