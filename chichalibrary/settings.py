@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-6l@75u43h@tf^(b)e!1hnzsvb177gxzp*q&8qlnz94%$zic22m
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "chichalibrary.onrender.com/",
+    "chichalibrary.onrender.com",
     "localhost"
 ]
 
