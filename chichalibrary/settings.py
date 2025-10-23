@@ -17,6 +17,8 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    "chichalibrary.com",
+    "www.chichalibrary.com",
     "chichalibrary.onrender.com",
     "localhost"
 ]
