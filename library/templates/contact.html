@@ -1,4 +1,4 @@
-<section class="contact-section">
+<section class="contact-section" id="contact">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
@@ -9,7 +9,19 @@
         </p>
 
         <form method="POST" action="{% url 'home' %}">
-          {% csrf_token %}
+          {% csrf_token %} {% if messages %}
+          <div
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            {% for message in messages %} {{ message }} {% endfor %}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+            ></button>
+          </div>
+          {% endif %}
 
           <div class="row g-3">
             <div class="col-md-6">
@@ -33,7 +45,8 @@
             </div>
 
             <div class="col-md-6">
-              <label for="libreria" class="form-label">Nombre de la Librería</label
+              <label for="libreria" class="form-label"
+                >Nombre de la Librería</label
               >
               <input
                 type="text"
@@ -45,12 +58,7 @@
 
             <div class="col-md-6">
               <label for="url" class="form-label">URL</label>
-              <input
-                type="url"
-                class="form-control"
-                id="url"
-                name="url"
-              />
+              <input type="url" class="form-control" id="url" name="url" />
             </div>
 
             <div class="col-md-6">
@@ -64,8 +72,7 @@
             </div>
 
             <div class="col-12">
-              <label for="mensaje" class="form-label">Descripción</label
-              >
+              <label for="mensaje" class="form-label">Descripción</label>
               <textarea
                 class="form-control"
                 id="description"

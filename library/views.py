@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.urls import reverse
 
 from .models import Category, Item, Post
 
@@ -28,7 +29,7 @@ def home(request):
 
         messages.success(request, "¡Gracias por tu sugerencia! La revisaremos pronto.")
 
-        return redirect("home")
+        return redirect(reverse("home") + "#contact")
 
     categories = Category.objects.all()
     items = Item.objects.all().order_by("-created_at")
