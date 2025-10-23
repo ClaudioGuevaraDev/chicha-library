@@ -22,193 +22,66 @@
       class="carousel slide"
       data-bs-ride="carousel"
     >
+      <!-- Indicadores -->
       <div class="carousel-indicators">
+        {% for slide in slides %}
         <button
           type="button"
           data-bs-target="#latestLibrariesCarousel"
-          data-bs-slide-to="0"
-          class="active"
+          data-bs-slide-to="{{ forloop.counter0 }}"
+          class="{% if forloop.first %}active{% endif %}"
         ></button>
-        <button
-          type="button"
-          data-bs-target="#latestLibrariesCarousel"
-          data-bs-slide-to="1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#latestLibrariesCarousel"
-          data-bs-slide-to="2"
-        ></button>
+        {% endfor %}
       </div>
 
+      <!-- Slides -->
       <div class="carousel-inner">
-        <div class="carousel-item active">
+        {% for slide in slides %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
           <div class="row g-4">
+            {% for item in slide %}
             <div class="col-md-4">
               <div class="card library-card">
+                {% if item.image %}
                 <img
-                  src="https://picsum.photos/400/300?random=1"
+                  src="/media/{{ item.image }}"
                   class="card-img-top"
-                  alt="React"
+                  alt="{{ item.name }}"
                 />
+                {% else %}
+                <img
+                  src="/media/items/default.png"
+                  class="card-img-top"
+                  alt="Sin imagen"
+                  style="object-fit: contain"
+                />
+                {% endif %}
                 <div class="card-body">
-                  <span class="category-badge">Frontend</span>
-                  <h5 class="card-title mt-2">React</h5>
-                  <p class="card-text">
-                    Librería de JavaScript para construir interfaces de usuario
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
+                  <div class="d-flex flex-wrap mb-2">
+                  {% for category in item.categories.all %}
+                    <span class="category-badge me-2 mb-2">{{ category.name }}</span>
+                  {% endfor %}
+                </div>
+                  <h5 class="card-title mt-2">{{ item.name }}</h5>
+                  <p class="card-text">{{ item.description }}</p>
+                  {% if item.url %}
+                  <a
+                    href="{{ item.url }}"
+                    target="_blank"
+                    class="btn btn-visit btn-sm"
+                    >Visitar sitio →</a
+                  >
+                  {% endif %}
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=2"
-                  class="card-img-top"
-                  alt="TailwindCSS"
-                />
-                <div class="card-body">
-                  <span class="category-badge">CSS</span>
-                  <h5 class="card-title mt-2">TailwindCSS</h5>
-                  <p class="card-text">
-                    Framework CSS utility-first para diseño rápido
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=3"
-                  class="card-img-top"
-                  alt="Express"
-                />
-                <div class="card-body">
-                  <span class="category-badge">Backend</span>
-                  <h5 class="card-title mt-2">Express.js</h5>
-                  <p class="card-text">
-                    Framework web minimalista para Node.js
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
-
-        <div class="carousel-item">
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=4"
-                  class="card-img-top"
-                  alt="Vue"
-                />
-                <div class="card-body">
-                  <span class="category-badge">Frontend</span>
-                  <h5 class="card-title mt-2">Vue.js</h5>
-                  <p class="card-text">
-                    Framework progresivo para construir interfaces
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=5"
-                  class="card-img-top"
-                  alt="Django"
-                />
-                <div class="card-body">
-                  <span class="category-badge">Backend</span>
-                  <h5 class="card-title mt-2">Django</h5>
-                  <p class="card-text">
-                    Framework web de alto nivel para Python
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=6"
-                  class="card-img-top"
-                  alt="PostgreSQL"
-                />
-                <div class="card-body">
-                  <span class="category-badge">Base de Datos</span>
-                  <h5 class="card-title mt-2">PostgreSQL</h5>
-                  <p class="card-text">
-                    Sistema de base de datos relacional avanzado
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=7"
-                  class="card-img-top"
-                  alt="Docker"
-                />
-                <div class="card-body">
-                  <span class="category-badge">DevOps</span>
-                  <h5 class="card-title mt-2">Docker</h5>
-                  <p class="card-text">
-                    Plataforma para contenedores de aplicaciones
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=8"
-                  class="card-img-top"
-                  alt="FastAPI"
-                />
-                <div class="card-body">
-                  <span class="category-badge">Backend</span>
-                  <h5 class="card-title mt-2">FastAPI</h5>
-                  <p class="card-text">
-                    Framework moderno y rápido para APIs con Python
-                  </p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card library-card">
-                <img
-                  src="https://picsum.photos/400/300?random=9"
-                  class="card-img-top"
-                  alt="Jest"
-                />
-                <div class="card-body">
-                  <span class="category-badge">Testing</span>
-                  <h5 class="card-title mt-2">Jest</h5>
-                  <p class="card-text">Framework de testing para JavaScript</p>
-                  <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
 
+      <!-- Controles -->
       <button
         class="carousel-control-prev"
         type="button"

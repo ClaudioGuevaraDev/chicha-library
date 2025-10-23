@@ -1,173 +1,85 @@
 <div class="container mb-5">
   <div class="row g-4">
-    <!-- Card 1 -->
-    <div class="col-md-4">
+    {% if items %} {% for item in items %}
+    <div class="col-12 col-sm-6 col-lg-4">
       <div class="card library-card">
+        {% if item.image %}
         <img
-          src="https://picsum.photos/400/300?random=10"
+          src="/media/{{ item.image }}"
           class="card-img-top"
-          alt="Angular"
+          alt="{{ item.name }}"
         />
+        {% else %}
+        <img
+          src="/media/items/default.png"
+          class="card-img-top"
+          alt="Sin imagen"
+          style="object-fit: contain"
+        />
+        {% endif %}
         <div class="card-body">
-          <span class="category-badge">Frontend</span>
-          <h5 class="card-title mt-2">Angular</h5>
-          <p class="card-text">Framework para aplicaciones web dinámicas</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
+          <div class="d-flex flex-wrap mb-2">
+            {% for category in item.categories.all %}
+            <span class="category-badge me-2 mb-2">{{ category.name }}</span>
+            {% endfor %}
+          </div>
+          <h5 class="card-title mt-2">{{ item.name }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <a href="{{ item.url }}" target="_blank" class="btn btn-visit btn-sm"
+            >Visitar sitio →</a
+          >
         </div>
       </div>
     </div>
-
-    <!-- Card 2 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=11"
-          class="card-img-top"
-          alt="Bootstrap"
-        />
-        <div class="card-body">
-          <span class="category-badge">CSS</span>
-          <h5 class="card-title mt-2">Bootstrap</h5>
-          <p class="card-text">Framework CSS más popular del mundo</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
+    {% endfor %} {% else %}
+    <div class="col-12 text-center my-5">
+      <p class="fw-bold">
+        No se encontraron librerías que coincidan con tu búsqueda.
+      </p>
     </div>
-
-    <!-- Card 3 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=12"
-          class="card-img-top"
-          alt="MongoDB"
-        />
-        <div class="card-body">
-          <span class="category-badge">Base de Datos</span>
-          <h5 class="card-title mt-2">MongoDB</h5>
-          <p class="card-text">Base de datos NoSQL orientada a documentos</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=13"
-          class="card-img-top"
-          alt="Next.js"
-        />
-        <div class="card-body">
-          <span class="category-badge">Frontend</span>
-          <h5 class="card-title mt-2">Next.js</h5>
-          <p class="card-text">Framework de React para producción</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=14"
-          class="card-img-top"
-          alt="Laravel"
-        />
-        <div class="card-body">
-          <span class="category-badge">Backend</span>
-          <h5 class="card-title mt-2">Laravel</h5>
-          <p class="card-text">Framework PHP elegante y expresivo</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=15"
-          class="card-img-top"
-          alt="Kubernetes"
-        />
-        <div class="card-body">
-          <span class="category-badge">DevOps</span>
-          <h5 class="card-title mt-2">Kubernetes</h5>
-          <p class="card-text">Sistema de orquestación de contenedores</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 7 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=16"
-          class="card-img-top"
-          alt="TensorFlow"
-        />
-        <div class="card-body">
-          <span class="category-badge">Machine Learning</span>
-          <h5 class="card-title mt-2">TensorFlow</h5>
-          <p class="card-text">
-            Plataforma de machine learning de código abierto
-          </p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 8 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=17"
-          class="card-img-top"
-          alt="React Native"
-        />
-        <div class="card-body">
-          <span class="category-badge">Mobile</span>
-          <h5 class="card-title mt-2">React Native</h5>
-          <p class="card-text">Framework para aplicaciones móviles nativas</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 9 -->
-    <div class="col-md-4">
-      <div class="card library-card">
-        <img
-          src="https://picsum.photos/400/300?random=18"
-          class="card-img-top"
-          alt="Cypress"
-        />
-        <div class="card-body">
-          <span class="category-badge">Testing</span>
-          <h5 class="card-title mt-2">Cypress</h5>
-          <p class="card-text">Framework de testing end-to-end moderno</p>
-          <a href="#" class="btn btn-visit btn-sm">Visitar sitio →</a>
-        </div>
-      </div>
-    </div>
+    {% endif %}
   </div>
 
   <!-- Paginación -->
+  {% if items %}
   <nav aria-label="Navegación de páginas" class="mt-5">
     <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Anterior</a>
-      </li>
-      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      {% if items.has_previous %}
       <li class="page-item">
-        <a class="page-link" href="#">Siguiente</a>
+        <a class="page-link" href="?page={{ items.previous_page_number }}"
+          >Anterior</a
+        >
       </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">Anterior</span>
+      </li>
+      {% endif %} {% for num in items.paginator.page_range %} {% if items.number == num %}
+      <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+      {% else %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="?page={{ num }}&search={{ request.GET.search }}&category={{ request.GET.category }}#results"
+        >
+          {{ num }}
+        </a>
+      </li>
+      {% endif %} {% endfor %} {% if items.has_next %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="?page={{ items.next_page_number }}&search={{ request.GET.search }}&category={{ request.GET.category }}#results"
+        >
+          Siguiente
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">Siguiente</span>
+      </li>
+      {% endif %}
     </ul>
   </nav>
+  {% endif %}
 </div>
