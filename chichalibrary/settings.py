@@ -19,7 +19,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "chichalibrary.com",
     "www.chichalibrary.com",
-    "localhost"
+    "localhost",
+    "chicha-library-production.up.railway.app"
 ]
 
 
