@@ -23,6 +23,12 @@ ALLOWED_HOSTS = [
     "chicha-library-production.up.railway.app"
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://chicha-library-production.up.railway.app",
+    "https://chichalibrary.com",
+    "https://www.chichalibrary.com",
+]
+
 
 # Application definition
 
