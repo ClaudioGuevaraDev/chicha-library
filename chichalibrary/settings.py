@@ -17,14 +17,16 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    "chichalibrary.com",
     "www.chichalibrary.com",
-    "chicha-library-production.up.railway.app",
     "localhost",
+    "chicha-library-production.up.railway.app"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://www.chichalibrary.com"
-    "https://chicha-library-production.up.railway.app"
+    "https://chicha-library-production.up.railway.app",
+    "https://chichalibrary.com",
+    "https://www.chichalibrary.com",
 ]
 
 
